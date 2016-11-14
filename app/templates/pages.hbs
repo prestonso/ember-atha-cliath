@@ -1,0 +1,11 @@
+<h2>List of pages</h2>
+
+{{#each model as |page|}}
+<h3>{{page.title}}</h3>
+<ul>
+  <li>NID: {{page.nid}}</li>
+  <li>UUID: {{page.uuid}}</li>
+  <li>Created: {{page.created}}</li>
+</ul>
+{{page.body.value}}
+{{/each}}

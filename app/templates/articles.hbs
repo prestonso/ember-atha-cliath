@@ -1,0 +1,11 @@
+<h2>List of articles</h2>
+
+{{#each model as |article|}}
+<h3>{{article.title}}</h3>
+<ul>
+  <li>NID: {{article.nid}}</li>
+  <li>UUID: {{article.uuid}}</li>
+  <li>Created: {{article.created}}</li>
+</ul>
+{{article.body.value}}
+{{/each}}
