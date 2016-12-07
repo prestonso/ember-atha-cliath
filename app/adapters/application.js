@@ -3,20 +3,24 @@ import DS from 'ember-data';
 export default DS.JSONAPIAdapter.extend({
   host: 'http://dublin-drupal.dd:8083',
   namespace: 'api',
-  pathForType: function (type) {
-    let entityType;
-    switch (type) {
-      case 'user--user':
-        entityType = 'user/user';
-        break;
 
+  pathForType(type) {
+    let entityPath;
+    switch(type) {
+      case 'node--article':
+        entityPath = 'node/article';
+        break;
       case 'node--page':
-        entityType = 'node/page';
+        entityPath = 'node/page';
         break;
-
-      default:
-        entityType = 'node/article';
+      case 'user--user':
+        entityPath = 'user/user';
+        break;
     }
-    return entityType + '?_format=api_json';
+    return entityPath;
+  },
+
+  buildURL() {
+    return this._super(...arguments) + '?_format=api_json';
   }
 });
